@@ -1,4 +1,5 @@
-function [m,b,r] = postreg(a,t)
+function [m,b,r] = postreg(a,t, title_str)
+title_str = sprintf('%s\n', title_str);
 %POSTREG Postprocesses the trained network response with a linear regression.
 %	
 %	Syntax
@@ -81,7 +82,7 @@ alpha = 0.75;
 llx = alpha*v(2) + (1-alpha)*v(1);
 lly = (1-alpha)*v(4) + alpha*v(3);
 index = fix(Q/2);
-title(['Best Linear Fit:  A = (',num2str(m,3),') T + (', num2str(b,3), ')']);
+title([title_str,'Best Linear Fit:  A = (',num2str(m,3),') T + (', num2str(b,3), ')']);
 text(llx,lly,['R = ', num2str(r,3)]);
 legend('Data Points','A = T','Best Linear Fit',-1);
 
